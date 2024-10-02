@@ -2,7 +2,8 @@ services:
   mysql:
     container_name: prestashop_mysql
     image: mysql:latest
-    restart: unless-stopped
+    platform: linux/amd64
+    restart: always
     environment:
       MYSQL_ROOT_PASSWORD: admin
       MYSQL_DATABASE: prestashop
@@ -15,7 +16,8 @@ services:
   prestashop:
     container_name: prestashop_ps
     image: prestashop/prestashop:latest
-    restart: unless-stopped
+    platform: linux/amd64
+    restart: always
     depends_on:
       - mysql
     ports:
@@ -30,7 +32,7 @@ services:
     networks:
       - prestashop_network
     volumes:
-      - ~/Desktop/prestaLocal:/var/www/html
+      - ~/Desktop/prestaDocker:/var/www/html
 networks:
   prestashop_network:
 volumes:
