@@ -12,16 +12,16 @@ services:
     volumes:
       - dbdata:/var/lib/mysql
     ports:
-      - "3306:3306"
+      - "22100:3306"
   prestashop:
-    container_name: prestashop_ps
+    container_name: prestashop_ps_new
     image: prestashop/prestashop:latest
     platform: linux/amd64
     restart: always
     depends_on:
       - mysql
     ports:
-      - 8080:80
+      - 22000:80
     environment:
       DB_SERVER: prestashop_mysql
       DB_NAME: prestashop
@@ -32,7 +32,7 @@ services:
     networks:
       - prestashop_network
     volumes:
-      - ~/Desktop/prestaDocker:/var/www/html
+      - ./prestaDocker:/var/www/html
 networks:
   prestashop_network:
 volumes:
