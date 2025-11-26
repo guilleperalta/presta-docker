@@ -2,7 +2,7 @@ services:
   mysql:
     container_name: prestashop_mysql
     image: mysql:latest
-    # platform: linux/amd64
+    platform: linux/amd64
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: admin
@@ -16,8 +16,8 @@ services:
   prestashop:
     container_name: prestashop_ps
     # image: prestashop/prestashop:latest
-    image: prestashop/prestashop:1.8
-    # platform: linux/amd64
+    image: prestashop/prestashop:8
+    platform: linux/amd64
     restart: always
     depends_on:
       - mysql
